@@ -37,3 +37,12 @@ function search(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = math.round(fahrenheitTemperature);
+}
+let celsiusTemperature = null;
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);

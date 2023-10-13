@@ -32,6 +32,11 @@ body {
     rgb(255, 166, 0) 14.7%,
     rgb(255, 99, 97) 73%
   );
+  max-width: 600px;
+  border: 1px solid whitesmoke;
+  margin: 0px auto;
+  background-size: 600px;
+  background-position: center;
 }
 .col-2 {
   color: #fff;
@@ -43,5 +48,8 @@ body {
 }
 .col-4 {
   color: #fff;
+  text-align: center;
+}
+units {
   text-align: center;
 }
