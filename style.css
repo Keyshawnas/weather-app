@@ -50,6 +50,10 @@ body {
   color: #fff;
   text-align: center;
 }
-units {
+p {
   text-align: center;
+}
+h5 {
+  text-align: center;
+  font-size: 10px;
 }
