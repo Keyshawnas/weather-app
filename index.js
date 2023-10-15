@@ -14,19 +14,27 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
 let apiKey = "7f1bbed58d484e33c3cd9ca550ef9065";
-let city = "East Orange";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=East Orange&appid=${apiKey}&units=metric`;
+
+console.log(apiUrl);
+axios.get(apiUrl).then(showTemperature);
 
 function showTemperature(response) {
-  console.log(response.data);
+  console.log(response.data.main.temp);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   let description = document.querySelector("#temperature-description");
-  temperatureElement.innerHTML = `${temperature}`;
+  let cityElement = document.querySelector("#city");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
   description.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 let h1 = document.querySelector("#city");
-h1.innerHTML = city;
+h1.innerHTML = "city";
 
 function search(event) {
   event.preventDefault();
@@ -41,7 +49,8 @@ function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = math.round(fahrenheitTemperature);
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  cityElement.innerHTML = response.data.name;
 }
 let celsiusTemperature = null;
 let fahrenheitLink = document.querySelector("#fahrenheit-link");

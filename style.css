@@ -1,12 +1,21 @@
 h1 {
   text-align: center;
-  font-weight: bold;
   color: #fff;
   font-size: 60px;
 }
-div {
+.temp {
+  color: #fff;
+  text-align: center;
+  font-size: 45px;
+}
+.units {
+  text-align: center;
+}
+
+.row {
   text-align: center;
   color: #fff;
+  font-size: 15px;
 }
 p {
   text-align: center;
@@ -37,23 +46,24 @@ body {
   margin: 0px auto;
   background-size: 600px;
   background-position: center;
+  background-repeat: no-repeat;
 }
 .col-2 {
   color: #fff;
   display: block;
   margin: 0 auto;
   text-align: center;
-  margin-top: 180px;
   font-size: 20px;
 }
 .col-4 {
   color: #fff;
   text-align: center;
 }
-p {
-  text-align: center;
-}
+
 h5 {
   text-align: center;
   font-size: 10px;
+}
+a {
+  color: #fff;
 }
