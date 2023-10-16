@@ -37,7 +37,7 @@ function showTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
-    (src = "icon"),
+    "src",
     `https://openweathermap.org/img/wn/10d@2x.png`
   );
 }
