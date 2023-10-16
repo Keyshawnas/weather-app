@@ -1,14 +1,13 @@
-let now = new Date();
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
 
-let h2 = document.querySelector("h2");
+  let hour = now.getHours();
+  let minute = now.getMinutes();
 
-let hour = now.getHours();
-let minute = now.getMinutes();
-
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let day = days[now.getDay()];
-
-h2.innerHTML = `${day} ${hour}:${minute}`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[now.getDay()];
+  return `${day} ${hour}:${minute}`;
+}
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
@@ -19,7 +18,6 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=East Orange&appi
 axios.get(apiUrl).then(showTemperature);
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   let description = document.querySelector("#temperature-description");
   let cityElement = document.querySelector("#city");
