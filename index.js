@@ -15,7 +15,6 @@ function formatDay(timestamp) {
 
   return days[day];
 }
-
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -50,12 +49,10 @@ function displayForecast(response) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
-function search(city) {
-  let apiKey = "7f1bbed58d484e33c3cd9ca550ef9065";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=East Orange&appid=${apiKey}&units=metric`;
+let apiKey = "7f1bbed58d484e33c3cd9ca550ef9065";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=East Orange&appid=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(showTemperature);
-}
+axios.get(apiUrl).then(showTemperature);
 
 function getForecast(coordinates) {
   let apiKey = "7f1bbed58d484e33c3cd9ca550ef9065";
