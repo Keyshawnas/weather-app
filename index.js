@@ -19,7 +19,7 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (forecastDay, index) {
+  forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
@@ -49,14 +49,14 @@ function displayForecast(response) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
-let apiKey = "7f1bbed58d484e33c3cd9ca550ef9065";
+let apiKey = "1a6432c5ca7b6f9b0bee45c98d54ea71";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=East Orange&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(showTemperature);
 
 function getForecast(coordinates) {
-  let apiKey = "7f1bbed58d484e33c3cd9ca550ef9065";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid={apiKey}`;
+  let apiKey = "1a6432c5ca7b6f9b0bee45c98d54ea71";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -81,8 +81,8 @@ function showTemperature(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
-getForecast(response.data.coord);
 
 let h1 = document.querySelector("#city");
 h1.innerHTML = "";
