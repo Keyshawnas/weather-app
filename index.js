@@ -83,6 +83,34 @@ function showTemperature(response) {
   );
   getForecast(response.data.coord);
 }
+navigator.geolocation.getCurrentPosition((position) => {
+  const lat = position.coords.latitude;
+  const long = position.coords.longitude;
+  const apiKey = "1a6432c5ca7b6f9b0bee45c98d54ea71";
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`;
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      const temp = data.main.temp;
+      console.log(
+        `The current temperature is ${temp} degrees Celsius at latitude ${lat} and longitude ${long}.`
+      );
+    })
+    .catch((error) => console.log(error));
+});
+
+currentLocationButton = document.getElementById("current-location");
+currentLocationButton.addEventListener("click", function (event) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+});
 
 let h1 = document.querySelector("#city");
 h1.innerHTML = "";
